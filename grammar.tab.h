@@ -44,9 +44,10 @@
      AND_OP = 260,
      OR_OP = 261,
      NOT_OP = 262,
-     LPAREN = 263,
-     RPAREN = 264,
-     EOL = 265
+     XOR_OP = 263,
+     LPAREN = 264,
+     RPAREN = 265,
+     EOL = 266
    };
 #endif
 

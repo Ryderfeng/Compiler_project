@@ -11,7 +11,7 @@ void yyerror(const char *s);
 /* 1. Token 宣告區                                                           */
 /* ========================================================================= */
 %token TRUE_VAL FALSE_VAL
-%token AND_OP OR_OP NOT_OP
+%token AND_OP OR_OP NOT_OP XOR_OP
 %token LPAREN RPAREN EOL
 
 /* ========================================================================= */
