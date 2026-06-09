@@ -72,6 +72,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#define YYERROR_VERBOSE 1
 
 /*  Flex 分析函式與錯誤處理 */
 int yylex(void);
@@ -79,7 +80,7 @@ void yyerror(const char *s);
 
 
 /* Line 189 of yacc.c  */
-#line 83 "grammar.tab.c"
+#line 84 "grammar.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -132,7 +133,7 @@ typedef int YYSTYPE;
 
 
 /* Line 264 of yacc.c  */
-#line 136 "grammar.tab.c"
+#line 137 "grammar.tab.c"
 
 #ifdef short
 # undef short
@@ -347,16 +348,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   29
+#define YYLAST   34
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  12
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  12
+#define YYNRULES  13
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  20
+#define YYNSTATES  22
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -403,7 +404,7 @@ static const yytype_uint8 yytranslate[] =
 static const yytype_uint8 yyprhs[] =
 {
        0,     0,     3,     4,     7,     9,    12,    15,    17,    19,
-      23,    27,    30
+      23,    27,    31,    34
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
@@ -411,15 +412,15 @@ static const yytype_int8 yyrhs[] =
 {
       13,     0,    -1,    -1,    13,    14,    -1,    11,    -1,    15,
       11,    -1,     1,    11,    -1,     3,    -1,     4,    -1,    15,
-       5,    15,    -1,    15,     6,    15,    -1,     7,    15,    -1,
-       9,    15,    10,    -1
+       5,    15,    -1,    15,     6,    15,    -1,    15,     8,    15,
+      -1,     7,    15,    -1,     9,    15,    10,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    31,    31,    33,    38,    39,    43,    51,    52,    53,
-      54,    55,    56
+       0,    33,    33,    35,    40,    41,    45,    53,    54,    55,
+      56,    57,    58,    59
 };
 #endif
 
@@ -448,14 +449,14 @@ static const yytype_uint16 yytoknum[] =
 static const yytype_uint8 yyr1[] =
 {
        0,    12,    13,    13,    14,    14,    14,    15,    15,    15,
-      15,    15,    15
+      15,    15,    15,    15
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
        0,     2,     0,     2,     1,     2,     2,     1,     1,     3,
-       3,     2,     3
+       3,     3,     2,     3
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -464,7 +465,8 @@ static const yytype_uint8 yyr2[] =
 static const yytype_uint8 yydefact[] =
 {
        2,     0,     1,     0,     7,     8,     0,     0,     4,     3,
-       0,     6,    11,     0,     0,     0,     5,    12,     9,    10
+       0,     6,    12,     0,     0,     0,     0,     5,    13,     9,
+      10,    11
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -478,8 +480,9 @@ static const yytype_int8 yydefgoto[] =
 #define YYPACT_NINF -10
 static const yytype_int8 yypact[] =
 {
-     -10,     0,   -10,    -9,   -10,   -10,    12,    12,   -10,   -10,
-      17,   -10,   -10,    19,    12,    12,   -10,   -10,   -10,     3
+     -10,     0,   -10,    -9,   -10,   -10,    13,    13,   -10,   -10,
+      18,   -10,   -10,    22,    13,    13,    13,   -10,   -10,   -10,
+      26,     3
 };
 
 /* YYPGOTO[NTERM-NUM].  */
@@ -496,15 +499,17 @@ static const yytype_int8 yypgoto[] =
 static const yytype_uint8 yytable[] =
 {
        2,     3,    11,     4,     5,    12,    13,     6,    14,     7,
-       0,     8,     0,    18,    19,     4,     5,     0,     0,     6,
-       0,     7,    14,    15,    14,    15,     0,     0,    16,    17
+       0,     8,     0,    19,    20,    21,     4,     5,     0,     0,
+       6,     0,     7,    14,    15,     0,    16,    14,    15,    17,
+      16,    14,    18,     0,    16
 };
 
 static const yytype_int8 yycheck[] =
 {
        0,     1,    11,     3,     4,     6,     7,     7,     5,     9,
-      -1,    11,    -1,    14,    15,     3,     4,    -1,    -1,     7,
-      -1,     9,     5,     6,     5,     6,    -1,    -1,    11,    10
+      -1,    11,    -1,    14,    15,    16,     3,     4,    -1,    -1,
+       7,    -1,     9,     5,     6,    -1,     8,     5,     6,    11,
+       8,     5,    10,    -1,     8
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -512,7 +517,8 @@ static const yytype_int8 yycheck[] =
 static const yytype_uint8 yystos[] =
 {
        0,    13,     0,     1,     3,     4,     7,     9,    11,    14,
-      15,    11,    15,    15,     5,     6,    11,    10,    15,    15
+      15,    11,    15,    15,     5,     6,     8,    11,    10,    15,
+      15,    15
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1326,14 +1332,14 @@ yyreduce:
         case 4:
 
 /* Line 1455 of yacc.c  */
-#line 38 "grammar.y"
+#line 40 "grammar.y"
     { /* 使用者只按 Enter，不動作 */ ;}
     break;
 
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 39 "grammar.y"
+#line 41 "grammar.y"
     { 
         /* 【難度 3 的核心】當成功解析完一條運算式，立刻執行 C 語言 Action 印出結果 */
         printf(" Result: %s\n\n", (yyvsp[(1) - (2)]) ? "TRUE" : "FALSE"); 
@@ -1343,7 +1349,7 @@ yyreduce:
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 43 "grammar.y"
+#line 45 "grammar.y"
     { 
         /* 語法錯誤時的復原機制，讓程式不會因為一個錯字就崩潰結束 */
         yyerrok; 
@@ -1353,49 +1359,56 @@ yyreduce:
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 51 "grammar.y"
+#line 53 "grammar.y"
     { (yyval) = 1; ;}
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 52 "grammar.y"
+#line 54 "grammar.y"
     { (yyval) = 0; ;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 53 "grammar.y"
+#line 55 "grammar.y"
     { (yyval) = (yyvsp[(1) - (3)]) && (yyvsp[(3) - (3)]); ;}
     break;
 
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 54 "grammar.y"
+#line 56 "grammar.y"
     { (yyval) = (yyvsp[(1) - (3)]) || (yyvsp[(3) - (3)]); ;}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 55 "grammar.y"
-    { (yyval) = !(yyvsp[(2) - (2)]); ;}
+#line 57 "grammar.y"
+    { (yyval) = (yyvsp[(1) - (3)]) ^ (yyvsp[(3) - (3)]); ;}
     break;
 
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 56 "grammar.y"
+#line 58 "grammar.y"
+    { (yyval) = !(yyvsp[(2) - (2)]); ;}
+    break;
+
+  case 13:
+
+/* Line 1455 of yacc.c  */
+#line 59 "grammar.y"
     { (yyval) = (yyvsp[(2) - (3)]); ;}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1399 "grammar.tab.c"
+#line 1412 "grammar.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1607,7 +1620,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 59 "grammar.y"
+#line 62 "grammar.y"
 
 
 /* ========================================================================= */

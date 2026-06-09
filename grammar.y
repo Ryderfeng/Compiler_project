@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#define YYERROR_VERBOSE 1
 
 /*  Flex 分析函式與錯誤處理 */
 int yylex(void);
@@ -18,6 +19,7 @@ void yyerror(const char *s);
 /* 2. 優先權與結合律設定（越下方的優先權越高）                               */
 /* ========================================================================= */
 %left OR_OP          /* OR 優先權最低 */
+%left XOR_OP         /* XOR 優先權中, or < xor < and */
 %left AND_OP         /* AND 優先權中 */
 %right NOT_OP   /* NOT 優先權最高  */
 
@@ -52,6 +54,7 @@ expr:
     | FALSE_VAL         { $$ = 0; }  /* 讀到 false，數值設為 0 */
     | expr AND_OP expr  { $$ = $1 && $3; } /* 執行 C 語言的邏輯and */
     | expr OR_OP expr   { $$ = $1 || $3; } /* 執行 C 語言的邏輯or */
+    | expr XOR_OP expr   { $$ = $1 ^ $3; } /* 執行 C 語言的邏輯xor */
     | NOT_OP expr       { $$ = !$2; }      /* 執行 C 語言的邏輯not */
     | LPAREN expr RPAREN { $$ = $2; }      /* 剝掉括號，保留內部的計算結果 */
     ;
